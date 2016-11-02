@@ -1,0 +1,295 @@
+<?php
+
+namespace Keiwen\RiotApi\Dto\Team;
+use Keiwen\RiotApi\Dto\DtoParent;
+
+
+/**
+ * This object contains team information.
+ */
+class TeamDto extends DtoParent
+{
+
+
+    /**
+     * @inheritdoc
+     */
+    protected static function includedJsonObjects()
+    {
+        $included = parent::includedJsonObjects();
+        $included['matchHistory'] = TeamMatchHistorySummaryDto::class;
+        $included['roster'] = TeamRosterDto::class;
+        $included['teamStatDetails'] = TeamSummaryStatsDto::class;
+        return $included;
+    }
+
+
+    /**
+     * Date that team was created specified as epoch milliseconds.
+     * @return int
+     */
+    public function getCreateDate()
+    {
+        return $this->get('createDate', 0);
+    }
+
+
+    /**
+     * @param int $createDate
+     * @return static
+     */
+    public function setCreateDate(int $createDate)
+    {
+        return $this->set('createDate', $createDate);
+    }
+
+    /**
+     *
+     * @return string
+     */
+    public function getFullId()
+    {
+        return $this->get('fullId', '');
+    }
+
+
+    /**
+     * @param string $fullId
+     * @return static
+     */
+    public function setFullId(string $fullId)
+    {
+        return $this->set('fullId', $fullId);
+    }
+
+    /**
+     * Date that last game played by team ended specified as epoch milliseconds.
+     * @return int
+     */
+    public function getLastGameDate()
+    {
+        return $this->get('lastGameDate', 0);
+    }
+
+
+    /**
+     * @param int $lastGameDate
+     * @return static
+     */
+    public function setLastGameDate(int $lastGameDate)
+    {
+        return $this->set('lastGameDate', $lastGameDate);
+    }
+
+    /**
+     * Date that last member joined specified as epoch milliseconds.
+     * @return int
+     */
+    public function getLastJoinDate()
+    {
+        return $this->get('lastJoinDate', 0);
+    }
+
+
+    /**
+     * @param int $lastJoinDate
+     * @return static
+     */
+    public function setLastJoinDate(int $lastJoinDate)
+    {
+        return $this->set('lastJoinDate', $lastJoinDate);
+    }
+
+    /**
+     * Date that team last joined the ranked team queue specified as epoch milliseconds.
+     * @return int
+     */
+    public function getLastJoinedRankedTeamQueueDate()
+    {
+        return $this->get('lastJoinedRankedTeamQueueDate', 0);
+    }
+
+
+    /**
+     * @param int $lastJoinedRankedTeamQueueDate
+     * @return static
+     */
+    public function setLastJoinedRankedTeamQueueDate(int $lastJoinedRankedTeamQueueDate)
+    {
+        return $this->set('lastJoinedRankedTeamQueueDate', $lastJoinedRankedTeamQueueDate);
+    }
+
+    /**
+     *
+     * @return TeamMatchHistorySummaryDto[]
+     */
+    public function getMatchHistory()
+    {
+        return $this->get('matchHistory', array());
+    }
+
+
+    /**
+     * @param TeamMatchHistorySummaryDto[] $matchHistory
+     * @return static
+     */
+    public function setMatchHistory(array $matchHistory)
+    {
+        return $this->set('matchHistory', $matchHistory);
+    }
+
+    /**
+     * Date that team was last modified specified as epoch milliseconds.
+     * @return int
+     */
+    public function getModifyDate()
+    {
+        return $this->get('modifyDate', 0);
+    }
+
+
+    /**
+     * @param int $modifyDate
+     * @return static
+     */
+    public function setModifyDate(int $modifyDate)
+    {
+        return $this->set('modifyDate', $modifyDate);
+    }
+
+    /**
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->get('name', '');
+    }
+
+
+    /**
+     * @param string $name
+     * @return static
+     */
+    public function setName(string $name)
+    {
+        return $this->set('name', $name);
+    }
+
+    /**
+     *
+     * @return TeamRosterDto
+     */
+    public function getRoster()
+    {
+        return $this->get('roster', new TeamRosterDto());
+    }
+
+
+    /**
+     * @param TeamRosterDto $roster
+     * @return static
+     */
+    public function setRoster(TeamRosterDto $roster)
+    {
+        return $this->set('roster', $roster);
+    }
+
+    /**
+     * Date that second to last member joined specified as epoch milliseconds.
+     * @return int
+     */
+    public function getSecondLastJoinDate()
+    {
+        return $this->get('secondLastJoinDate', 0);
+    }
+
+
+    /**
+     * @param int $secondLastJoinDate
+     * @return static
+     */
+    public function setSecondLastJoinDate(int $secondLastJoinDate)
+    {
+        return $this->set('secondLastJoinDate', $secondLastJoinDate);
+    }
+
+    /**
+     *
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->get('status', '');
+    }
+
+
+    /**
+     * @param string $status
+     * @return static
+     */
+    public function setStatus(string $status)
+    {
+        return $this->set('status', $status);
+    }
+
+    /**
+     *
+     * @return string
+     */
+    public function getTag()
+    {
+        return $this->get('tag', '');
+    }
+
+
+    /**
+     * @param string $tag
+     * @return static
+     */
+    public function setTag(string $tag)
+    {
+        return $this->set('tag', $tag);
+    }
+
+    /**
+     *
+     * @return TeamSummaryStatsDto[]
+     */
+    public function getTeamStatDetails()
+    {
+        return $this->get('teamStatDetails', array());
+    }
+
+
+    /**
+     * @param TeamSummaryStatsDto[] $teamStatDetails
+     * @return static
+     */
+    public function setTeamStatDetails(array $teamStatDetails)
+    {
+        return $this->set('teamStatDetails', $teamStatDetails);
+    }
+
+    /**
+     * Date that third to last member joined specified as epoch milliseconds.
+     * @return int
+     */
+    public function getThirdLastJoinDate()
+    {
+        return $this->get('thirdLastJoinDate', 0);
+    }
+
+
+    /**
+     * @param int $thirdLastJoinDate
+     * @return static
+     */
+    public function setThirdLastJoinDate(int $thirdLastJoinDate)
+    {
+        return $this->set('thirdLastJoinDate', $thirdLastJoinDate);
+    }
+
+
+
+}

@@ -1,0 +1,15 @@
+{
+    "name": "keiwen/riotapi",
+    "type": "library",
+    "description": "Riot Api library for PHP (RALPHP)",
+	"version": "1.0",
+    "autoload": {
+        "psr-4": {
+            "Keiwen\\RiotApi\\": ""
+        }
+    },
+	"require": {
+        "php": ">=7.0",
+        "keiwen/utils": "~1.0"
+    }
+}
