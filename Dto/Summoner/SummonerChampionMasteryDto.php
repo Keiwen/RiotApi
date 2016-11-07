@@ -118,11 +118,11 @@ class SummonerChampionMasteryDto extends DtoParent
 
     /**
      * Last time this champion was played by this player - in Unix milliseconds time format.
-     * @return int
+     * @return string
      */
     public function getLastPlayTime()
     {
-        return $this->get('lastPlayTime', 0);
+        return $this->get('lastPlayTime', '0');
     }
 
     /**
@@ -130,7 +130,8 @@ class SummonerChampionMasteryDto extends DtoParent
      * @return static
      */
     public function setLastPlayTime($lastPlayTime) {
-        return $this->set('lastPlayTime', $lastPlayTime);
+        //if int to large (millisec timestamp), turned to float, so always turned to string
+        return $this->set('lastPlayTime', ''.$lastPlayTime);
     }
 
     /**
