@@ -13,11 +13,11 @@ class TeamMemberInfoDto extends DtoParent
 
     /**
      * Date that team member was invited to team specified as epoch milliseconds.
-     * @return int
+     * @return string
      */
     public function getInviteDate()
     {
-        return $this->get('inviteDate', 0);
+        return $this->get('inviteDate', '0');
     }
 
 
@@ -25,18 +25,19 @@ class TeamMemberInfoDto extends DtoParent
      * @param int $inviteDate
      * @return static
      */
-    public function setInviteDate(int $inviteDate)
+    public function setInviteDate($inviteDate)
     {
-        return $this->set('inviteDate', $inviteDate);
+        //if int to large (millisec timestamp), turned to float, so always turned to string
+        return $this->set('inviteDate', ''.$inviteDate);
     }
 
     /**
      * Date that team member joined team specified as epoch milliseconds.
-     * @return int
+     * @return string
      */
     public function getJoinDate()
     {
-        return $this->get('joinDate', 0);
+        return $this->get('joinDate', '0');
     }
 
 
@@ -44,18 +45,19 @@ class TeamMemberInfoDto extends DtoParent
      * @param int $joinDate
      * @return static
      */
-    public function setJoinDate(int $joinDate)
+    public function setJoinDate($joinDate)
     {
-        return $this->set('joinDate', $joinDate);
+        //if int to large (millisec timestamp), turned to float, so always turned to string
+        return $this->set('joinDate', ''.$joinDate);
     }
 
     /**
      *
-     * @return int
+     * @return string
      */
     public function getPlayerId()
     {
-        return $this->get('playerId', 0);
+        return $this->get('playerId', '0');
     }
 
 
@@ -63,9 +65,10 @@ class TeamMemberInfoDto extends DtoParent
      * @param int $playerId
      * @return static
      */
-    public function setPlayerId(int $playerId)
+    public function setPlayerId($playerId)
     {
-        return $this->set('playerId', $playerId);
+        //if int to large, turned to float, so always turned to string
+        return $this->set('playerId', ''.$playerId);
     }
 
     /**
