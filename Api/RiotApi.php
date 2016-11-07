@@ -403,6 +403,7 @@ class RiotApi
                                     string $format = self::FORMAT_JSON,
                                     string $dtoClass = DtoParent::class)
     {
+        if(empty($json)) $json = '';
         switch($format) {
             case self::FORMAT_STDCLASS: return json_decode($json); break;
             case self::FORMAT_ARRAY: return json_decode($json, true); break;
