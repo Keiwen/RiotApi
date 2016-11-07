@@ -11,7 +11,7 @@ use Keiwen\RiotApi\Services\ServiceRegistry;
 class Status extends AbstractService
 {
 
-    protected $urlPattern = '';
+    protected static $urlPattern = '';
 
     protected static function getServiceName() : string
     {
