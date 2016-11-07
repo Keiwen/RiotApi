@@ -1,13 +1,73 @@
-[2016-10-31.08:20:31][AMPAgent:ConfigLogAll           ] Config: servercompress: TRUE
-[2016-10-31.08:20:31][AMPAgent:NimitzAgentProcess     ] Machine ID: 6E31D7DB-62F8-4261-A830-6F0258625EEE
-[2016-10-31.08:20:31][AMPAgent:NimitzAgentProcess     ] Creating Pipe Server...
-[2016-10-31.08:20:31][AMPAgent:NimitzAgentProcess     ] Creating Agent Listener...
-[2016-10-31.08:20:31][AMPAgent:NimitzAgentProcess     ] Creating scheduler...
-[2016-10-31.08:20:31][AMPAgent:NimitzAgentProcess     ] Creating connection...
-[2016-10-31.08:20:49][AMPAgent:ClientReadCB           ] Header: msgid (18561614); msgType (0)
-[2016-10-31.08:20:49][AMPAgent:ClientReadCB           ] Payload: pluginId: RunProcess (6); payloadLen (37)
-[2016-10-31.08:20:50][runkbot:IsLoggedIn              ] IsLoggedIn: WTSGetActiveConsoleSessionId returned an inactive session(Session 1), trying  GetActiveSessionPidList
-[2016-10-31.08:20:50][runkbot:IsLoggedIn              ] IsLoggedIn: No Active User
-[2016-10-31.08:20:50][KInventory:runInventory         ] KInventory   Begin capturing Inventory...
-[2016-10-31.08:20:50][KInventory:CInventoryData::Initi] KInventory   InventoryData attempting to open DB file [C]
-[2016-10-31.08:20:50][KInventory:CInventor
+<?php
+
+namespace Keiwen\RiotApi\Dto\Match;
+
+use Keiwen\RiotApi\Dto\DtoParent;
+
+
+/**
+ * Banned champion information
+ */
+class BannedChampionDto extends DtoParent
+{
+
+
+    /**
+     * The ID of the banned champion
+     * @return int
+     */
+    public function getChampionId()
+    {
+        return $this->get('championId', 0);
+    }
+
+
+    /**
+     * @param int $championId
+     * @return static
+     */
+    public function setChampionId(int $championId)
+    {
+        return $this->set('championId', $championId);
+    }
+
+    /**
+     * The turn during which the champion was banned
+     * @return int
+     */
+    public function getPickTurn()
+    {
+        return $this->get('pickTurn', 0);
+    }
+
+
+    /**
+     * @param int $pickTurn
+     * @return static
+     */
+    public function setPickTurn(int $pickTurn)
+    {
+        return $this->set('pickTurn', $pickTurn);
+    }
+
+    /**
+     * The ID of the team that banned the champion
+     * @return int
+     */
+    public function getTeamId()
+    {
+        return $this->get('teamId', 0);
+    }
+
+
+    /**
+     * @param int $teamId
+     * @return static
+     */
+    public function setTeamId(int $teamId)
+    {
+        return $this->set('teamId', $teamId);
+    }
+
+
+}
