@@ -414,6 +414,7 @@ class RiotApi
                 }
                 //must check if json is a list of object
                 $decoded = json_decode($json, true);
+                if(empty($decoded)) $decoded = array();
                 if(!ArrayAnalyser::isSequential($decoded, false)) {
                     return new $dtoClass($json);
                 }
