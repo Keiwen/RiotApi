@@ -28,6 +28,8 @@ class RiotApi
     protected static $apiName = '';
     protected static $baseUrlPattern = '';
 
+    protected static $lastCurlError = '';
+
     protected static $apiInstances = array();
 
     protected static $cacheGetters = array('get', 'fetch');
@@ -196,6 +198,7 @@ class RiotApi
         //encode spaces
         $url = str_replace(' ', '%20', $url);
 
+        static::$lastCurlError = '';
         //check in cache
         $json = $this->readUrlInCache($url);
         if($json !== null) {
@@ -218,10 +221,11 @@ class RiotApi
         $this->messageManager->addMessage(MessageManager::TYPE_REQUEST, $url);
 
         $msg = 'found';
-        if($httpCode >= 400 || $httpCode < 0) {
+        if($httpCode >= 400 || $httpCode <= 0) {
             //something went wrong
             switch($httpCode) {
                 case -1: $msg = json_last_error_msg(); break;
+                case 0: $msg = static::$lastCurlError; break;
                 case 400: $msg = 'bad request'; break;
                 case 401: $msg = 'unauthorized'; break;
                 case 403: $msg = 'forbidden'; break;
@@ -289,8 +293,11 @@ class RiotApi
 
         $data = curl_exec($ch);
         $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        //$errno = curl_errno($ch);
-        //$error = curl_error($ch);
+        $errno = curl_errno($ch);
+        $error = curl_error($ch);
+        if($errno) {
+            static::$lastCurlError = "Curl error $errno: $error";
+        }
         curl_close($ch);
 
         return $data;
