@@ -64,11 +64,11 @@ class SummonerSummaryStatsDto extends DtoParent
 
     /**
      * Date stats were last modified specified as epoch milliseconds.
-     * @return int
+     * @return string
      */
     public function getModifyDate()
     {
-        return $this->get('modifyDate', 0);
+        return $this->get('modifyDate', '0');
     }
 
 
@@ -76,9 +76,10 @@ class SummonerSummaryStatsDto extends DtoParent
      * @param int $modifyDate
      * @return static
      */
-    public function setModifyDate(int $modifyDate)
+    public function setModifyDate($modifyDate)
     {
-        return $this->set('modifyDate', $modifyDate);
+        //if int to large (millisec timestamp), turned to float, so always turned to string
+        return $this->set('modifyDate', ''.$modifyDate);
     }
 
     /**
