@@ -31,11 +31,11 @@ class GameDto extends DtoParent
 
     /**
      * The ID of the game
-     * @return int
+     * @return string
      */
     public function getId()
     {
-        return $this->get('id', 0);
+        return $this->get('id', '0');
     }
 
 
@@ -43,9 +43,10 @@ class GameDto extends DtoParent
      * @param int $id
      * @return static
      */
-    public function setId(int $id)
+    public function setId($id)
     {
-        return $this->set('id', $id);
+        //if int to large, turned to float, so always turned to string
+        return $this->set('id', ''.$id);
     }
 
 
