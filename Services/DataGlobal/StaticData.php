@@ -23,7 +23,7 @@ use Keiwen\RiotApi\Services\ServiceRegistry;
 class StaticData extends AbstractService
 {
 
-    protected $urlPattern = '/api/lol/static-data/{region}/{version}';
+    protected static $urlPattern = '/api/lol/static-data/{region}/{version}';
 
     protected static function getServiceName() : string
     {
