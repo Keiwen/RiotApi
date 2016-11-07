@@ -77,19 +77,20 @@ class CurrentGameInfoDto extends GameDto
 
     /**
      * The game start time represented in epoch milliseconds
-     * @return int
+     * @return string
      */
     public function getGameStartTime()
     {
-        return $this->get('gameStartTime', 0);
+        return $this->get('gameStartTime', '0');
     }
 
     /**
      * @param int $gameStartTime
      * @return static
      */
-    public function setGameStartTime(int $gameStartTime) {
-        return $this->set('gameStartTime', $gameStartTime);
+    public function setGameStartTime($gameStartTime) {
+        //if int to large, turned to float, so always turned to string
+        return $this->set('gameStartTime', ''.$gameStartTime);
     }
 
 
