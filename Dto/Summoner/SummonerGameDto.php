@@ -47,11 +47,11 @@ class SummonerGameDto extends GameDto
 
     /**
      * Date that end game data was recorded, specified as epoch milliseconds.
-     * @return int
+     * @return string
      */
     public function getCreateDate()
     {
-        return $this->get('createDate', 0);
+        return $this->get('createDate', '0');
     }
 
 
@@ -59,9 +59,10 @@ class SummonerGameDto extends GameDto
      * @param int $createDate
      * @return static
      */
-    public function setCreateDate(int $createDate)
+    public function setCreateDate($createDate)
     {
-        return $this->set('createDate', $createDate);
+        //if int to large (millisec timestamp), turned to float, so always turned to string
+        return $this->set('createDate', ''.$createDate);
     }
 
 
