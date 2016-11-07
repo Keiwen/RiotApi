@@ -383,7 +383,7 @@ class MatchEventDto extends DtoParent
     public function setTimestamp($timestamp)
     {
         //if int to large (millisec timestamp), turned to float, so always turned to string
-        return $this->set('timestamp', $timestamp);
+        return $this->set('timestamp', ''.$timestamp);
     }
 
     /**
