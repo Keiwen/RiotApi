@@ -126,10 +126,10 @@ class SummonerChampionMasteryDto extends DtoParent
     }
 
     /**
-     * @param int $lastPlayTime
+     * @param int $lastPlayTime (could be given as float)
      * @return static
      */
-    public function setLastPlayTime(int $lastPlayTime) {
+    public function setLastPlayTime($lastPlayTime) {
         return $this->set('lastPlayTime', $lastPlayTime);
     }
 
