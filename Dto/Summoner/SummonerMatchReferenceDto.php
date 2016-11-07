@@ -54,11 +54,11 @@ class SummonerMatchReferenceDto extends DtoParent
 
     /**
      *
-     * @return int
+     * @return string
      */
     public function getMatchId()
     {
-        return $this->get('matchId', 0);
+        return $this->get('matchId', '0');
     }
 
 
@@ -68,7 +68,8 @@ class SummonerMatchReferenceDto extends DtoParent
      */
     public function setMatchId(int $matchId)
     {
-        return $this->set('matchId', $matchId);
+        //if int to large, turned to float, so always turned to string
+        return $this->set('matchId', ''.$matchId);
     }
 
     /**
