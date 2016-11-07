@@ -11,7 +11,7 @@ class CurrentGame extends AbstractService
 {
 
 
-    protected $urlPattern = '/observer-mode/rest/consumer/getSpectatorGameInfo/{platform}';
+    protected static $urlPattern = '/observer-mode/rest/consumer/getSpectatorGameInfo/{platform}';
 
     protected static function getServiceName() : string
     {
