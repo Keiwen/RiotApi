@@ -136,19 +136,20 @@ class SummonerChampionMasteryDto extends DtoParent
 
     /**
      * Player ID for this entry.
-     * @return int
+     * @return string
      */
     public function getPlayerId()
     {
-        return $this->get('playerId', 0);
+        return $this->get('playerId', '0');
     }
 
     /**
      * @param int $playerId
      * @return static
      */
-    public function setPlayerId(int $playerId) {
-        return $this->set('playerId', $playerId);
+    public function setPlayerId($playerId) {
+        //if int to large, turned to float, so always turned to string
+        return $this->set('playerId', ''.$playerId);
     }
 
 
