@@ -11,7 +11,7 @@ use Keiwen\RiotApi\Services\ServiceRegistry;
 class Championmastery extends AbstractService
 {
 
-    protected $urlPattern = '/championmastery/location/{platform}';
+    protected static $urlPattern = '/championmastery/location/{platform}';
 
     protected static function getServiceName() : string
     {
