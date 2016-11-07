@@ -71,11 +71,11 @@ class SummonerDto extends DtoParent
      * Date summoner was last modified specified as epoch milliseconds.
      * The following events will update this timestamp: profile icon change,
      * playing the tutorial or advanced tutorial, finishing a game, summoner name change
-     * @return int
+     * @return string
      */
     public function getRevisionDate()
     {
-        return $this->get('revisionDate', 0);
+        return $this->get('revisionDate', '0');
     }
 
 
@@ -83,9 +83,10 @@ class SummonerDto extends DtoParent
      * @param int $revisionDate
      * @return static
      */
-    public function setRevisionDate(int $revisionDate)
+    public function setRevisionDate($revisionDate)
     {
-        return $this->set('revisionDate', $revisionDate);
+        //if int to large (millisec timestamp), turned to float, so always turned to string
+        return $this->set('revisionDate', ''.$revisionDate);
     }
 
     /**
