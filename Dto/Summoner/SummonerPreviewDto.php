@@ -50,11 +50,11 @@ class SummonerPreviewDto extends DtoParent
 
     /**
      * Summoner ID
-     * @return int
+     * @return string
      */
     public function getSummonerId()
     {
-        return $this->get('summonerId', 0);
+        return $this->get('summonerId', '0');
     }
 
 
@@ -62,9 +62,10 @@ class SummonerPreviewDto extends DtoParent
      * @param int $summonerId
      * @return static
      */
-    public function setSummonerId(int $summonerId)
+    public function setSummonerId($summonerId)
     {
-        return $this->set('summonerId', $summonerId);
+        //if int to large, turned to float, so always turned to string
+        return $this->set('summonerId', ''.$summonerId);
     }
 
     /**
