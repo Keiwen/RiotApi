@@ -119,11 +119,11 @@ class ParticipantFrameDto extends DtoParent
 
     /**
      * Participant ID
-     * @return int
+     * @return string
      */
     public function getParticipantId()
     {
-        return $this->get('participantId', 0);
+        return $this->get('participantId', '0');
     }
 
 
@@ -131,9 +131,10 @@ class ParticipantFrameDto extends DtoParent
      * @param int $participantId
      * @return static
      */
-    public function setParticipantId(int $participantId)
+    public function setParticipantId($participantId)
     {
-        return $this->set('participantId', $participantId);
+        //if int to large, turned to float, so always turned to string
+        return $this->set('participantId', ''.$participantId);
     }
 
     /**
