@@ -43,11 +43,11 @@ class TeamRosterDto extends DtoParent
 
     /**
      *
-     * @return int
+     * @return string
      */
     public function getOwnerId()
     {
-        return $this->get('ownerId', 0);
+        return $this->get('ownerId', '0');
     }
 
 
@@ -55,9 +55,10 @@ class TeamRosterDto extends DtoParent
      * @param int $ownerId
      * @return static
      */
-    public function setOwnerId(int $ownerId)
+    public function setOwnerId($ownerId)
     {
-        return $this->set('ownerId', $ownerId);
+        //if int to large, turned to float, so always turned to string
+        return $this->set('ownerId', ''.$ownerId);
     }
 
 
