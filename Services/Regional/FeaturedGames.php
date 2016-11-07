@@ -10,7 +10,7 @@ use Keiwen\RiotApi\Services\ServiceRegistry;
 class FeaturedGames extends AbstractService
 {
 
-    protected $urlPattern = '/observer-mode/rest/featured';
+    protected static $urlPattern = '/observer-mode/rest/featured';
 
     protected static function getServiceName() : string
     {
