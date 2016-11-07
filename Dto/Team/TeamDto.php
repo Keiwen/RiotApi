@@ -26,11 +26,11 @@ class TeamDto extends DtoParent
 
     /**
      * Date that team was created specified as epoch milliseconds.
-     * @return int
+     * @return string
      */
     public function getCreateDate()
     {
-        return $this->get('createDate', 0);
+        return $this->get('createDate', '0');
     }
 
 
@@ -38,9 +38,10 @@ class TeamDto extends DtoParent
      * @param int $createDate
      * @return static
      */
-    public function setCreateDate(int $createDate)
+    public function setCreateDate($createDate)
     {
-        return $this->set('createDate', $createDate);
+        //if int to large (millisec timestamp), turned to float, so always turned to string
+        return $this->set('createDate', ''.$createDate);
     }
 
     /**
@@ -64,11 +65,11 @@ class TeamDto extends DtoParent
 
     /**
      * Date that last game played by team ended specified as epoch milliseconds.
-     * @return int
+     * @return string
      */
     public function getLastGameDate()
     {
-        return $this->get('lastGameDate', 0);
+        return $this->get('lastGameDate', '0');
     }
 
 
@@ -76,18 +77,19 @@ class TeamDto extends DtoParent
      * @param int $lastGameDate
      * @return static
      */
-    public function setLastGameDate(int $lastGameDate)
+    public function setLastGameDate($lastGameDate)
     {
-        return $this->set('lastGameDate', $lastGameDate);
+        //if int to large (millisec timestamp), turned to float, so always turned to string
+        return $this->set('lastGameDate', ''.$lastGameDate);
     }
 
     /**
      * Date that last member joined specified as epoch milliseconds.
-     * @return int
+     * @return string
      */
     public function getLastJoinDate()
     {
-        return $this->get('lastJoinDate', 0);
+        return $this->get('lastJoinDate', '0');
     }
 
 
@@ -95,18 +97,19 @@ class TeamDto extends DtoParent
      * @param int $lastJoinDate
      * @return static
      */
-    public function setLastJoinDate(int $lastJoinDate)
+    public function setLastJoinDate($lastJoinDate)
     {
-        return $this->set('lastJoinDate', $lastJoinDate);
+        //if int to large (millisec timestamp), turned to float, so always turned to string
+        return $this->set('lastJoinDate', ''.$lastJoinDate);
     }
 
     /**
      * Date that team last joined the ranked team queue specified as epoch milliseconds.
-     * @return int
+     * @return string
      */
     public function getLastJoinedRankedTeamQueueDate()
     {
-        return $this->get('lastJoinedRankedTeamQueueDate', 0);
+        return $this->get('lastJoinedRankedTeamQueueDate', '0');
     }
 
 
@@ -114,9 +117,10 @@ class TeamDto extends DtoParent
      * @param int $lastJoinedRankedTeamQueueDate
      * @return static
      */
-    public function setLastJoinedRankedTeamQueueDate(int $lastJoinedRankedTeamQueueDate)
+    public function setLastJoinedRankedTeamQueueDate($lastJoinedRankedTeamQueueDate)
     {
-        return $this->set('lastJoinedRankedTeamQueueDate', $lastJoinedRankedTeamQueueDate);
+        //if int to large (millisec timestamp), turned to float, so always turned to string
+        return $this->set('lastJoinedRankedTeamQueueDate', ''.$lastJoinedRankedTeamQueueDate);
     }
 
     /**
@@ -140,11 +144,11 @@ class TeamDto extends DtoParent
 
     /**
      * Date that team was last modified specified as epoch milliseconds.
-     * @return int
+     * @return string
      */
     public function getModifyDate()
     {
-        return $this->get('modifyDate', 0);
+        return $this->get('modifyDate', '0');
     }
 
 
@@ -152,9 +156,10 @@ class TeamDto extends DtoParent
      * @param int $modifyDate
      * @return static
      */
-    public function setModifyDate(int $modifyDate)
+    public function setModifyDate($modifyDate)
     {
-        return $this->set('modifyDate', $modifyDate);
+        //if int to large (millisec timestamp), turned to float, so always turned to string
+        return $this->set('modifyDate', ''.$modifyDate);
     }
 
     /**
@@ -197,11 +202,11 @@ class TeamDto extends DtoParent
 
     /**
      * Date that second to last member joined specified as epoch milliseconds.
-     * @return int
+     * @return string
      */
     public function getSecondLastJoinDate()
     {
-        return $this->get('secondLastJoinDate', 0);
+        return $this->get('secondLastJoinDate', '0');
     }
 
 
@@ -209,9 +214,10 @@ class TeamDto extends DtoParent
      * @param int $secondLastJoinDate
      * @return static
      */
-    public function setSecondLastJoinDate(int $secondLastJoinDate)
+    public function setSecondLastJoinDate($secondLastJoinDate)
     {
-        return $this->set('secondLastJoinDate', $secondLastJoinDate);
+        //if int to large (millisec timestamp), turned to float, so always turned to string
+        return $this->set('secondLastJoinDate', ''.$secondLastJoinDate);
     }
 
     /**
@@ -273,11 +279,11 @@ class TeamDto extends DtoParent
 
     /**
      * Date that third to last member joined specified as epoch milliseconds.
-     * @return int
+     * @return string
      */
     public function getThirdLastJoinDate()
     {
-        return $this->get('thirdLastJoinDate', 0);
+        return $this->get('thirdLastJoinDate', '0');
     }
 
 
@@ -285,9 +291,10 @@ class TeamDto extends DtoParent
      * @param int $thirdLastJoinDate
      * @return static
      */
-    public function setThirdLastJoinDate(int $thirdLastJoinDate)
+    public function setThirdLastJoinDate($thirdLastJoinDate)
     {
-        return $this->set('thirdLastJoinDate', $thirdLastJoinDate);
+        //if int to large (millisec timestamp), turned to float, so always turned to string
+        return $this->set('thirdLastJoinDate', ''.$thirdLastJoinDate);
     }
 
 
