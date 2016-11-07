@@ -171,11 +171,11 @@ class SummonerMatchReferenceDto extends DtoParent
 
     /**
      *
-     * @return int
+     * @return string
      */
     public function getTimestamp()
     {
-        return $this->get('timestamp', 0);
+        return $this->get('timestamp', '0');
     }
 
 
@@ -183,9 +183,9 @@ class SummonerMatchReferenceDto extends DtoParent
      * @param int $timestamp
      * @return static
      */
-    public function setTimestamp(int $timestamp)
+    public function setTimestamp($timestamp)
     {
-        return $this->set('timestamp', $timestamp);
+        return $this->set('timestamp', ''.$timestamp);
     }
 
 
