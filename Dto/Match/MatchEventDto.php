@@ -368,11 +368,11 @@ class MatchEventDto extends DtoParent
 
     /**
      * Represents how many milliseconds into the game the event occurred.
-     * @return int
+     * @return string
      */
     public function getTimestamp()
     {
-        return $this->get('timestamp', 0);
+        return $this->get('timestamp', '0');
     }
 
 
@@ -380,8 +380,9 @@ class MatchEventDto extends DtoParent
      * @param int $timestamp
      * @return static
      */
-    public function setTimestamp(int $timestamp)
+    public function setTimestamp($timestamp)
     {
+        //if int to large (millisec timestamp), turned to float, so always turned to string
         return $this->set('timestamp', $timestamp);
     }
 
