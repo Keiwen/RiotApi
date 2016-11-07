@@ -30,11 +30,11 @@ class MatchDetailDto extends GameDto
      * Match creation time.
      * Designates when the team select lobby is created and/or the match is made through match making,
      * not when the game actually starts.
-     * @return int
+     * @return string
      */
     public function getMatchCreation()
     {
-        return $this->get('matchCreation', 0);
+        return $this->get('matchCreation', '0');
     }
 
 
@@ -42,9 +42,10 @@ class MatchDetailDto extends GameDto
      * @param int $matchCreation
      * @return static
      */
-    public function setMatchCreation(int $matchCreation)
+    public function setMatchCreation($matchCreation)
     {
-        return $this->set('matchCreation', $matchCreation);
+        //if int to large, turned to float, so always turned to string
+        return $this->set('matchCreation', ''.$matchCreation);
     }
 
     /**
