@@ -33,11 +33,11 @@ class TeamMatchHistorySummaryDto extends DtoParent
 
     /**
      * Date that match was completed specified as epoch milliseconds.
-     * @return int
+     * @return string
      */
     public function getDate()
     {
-        return $this->get('date', 0);
+        return $this->get('date', '0');
     }
 
 
@@ -45,9 +45,10 @@ class TeamMatchHistorySummaryDto extends DtoParent
      * @param int $date
      * @return static
      */
-    public function setDate(int $date)
+    public function setDate($date)
     {
-        return $this->set('date', $date);
+        //if int to large (millisec timestamp), turned to float, so always turned to string
+        return $this->set('date', ''.$date);
     }
 
     /**
