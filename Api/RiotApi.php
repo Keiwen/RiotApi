@@ -7,13 +7,15 @@ namespace Keiwen\RiotApi\Api;
 use Keiwen\RiotApi\Constants\Region;
 use Keiwen\RiotApi\Dto\DtoParent;
 use Keiwen\RiotApi\Exceptions\ApiNotFoundException;
-use Keiwen\RiotApi\Exceptions\UnhandledCacheException;
 use Keiwen\RiotApi\Services\ServiceRegistry;
 use Keiwen\Utils\Analyse\ArrayAnalyser;
 use Keiwen\Utils\Curl\SimpleCurl;
+use Keiwen\Utils\Object\CacheHandlerTrait;
 
 class RiotApi
 {
+
+    use CacheHandlerTrait;
 
     private $apiKey;
     protected $server;
@@ -21,20 +23,13 @@ class RiotApi
     /** @var MessageManager */
     protected $messageManager;
     protected $outputFormat;
-    protected $defaultCacheLifetime;
-    protected $cache;
-    protected $cacheKeyPrefix;
 
-    protected static $staticCache = array();
     protected static $apiName = '';
     protected static $baseUrlPattern = '';
 
     protected static $lastCurlError = '';
 
     protected static $apiInstances = array();
-
-    protected static $cacheGetters = array('get', 'fetch');
-    protected static $cacheSetters = array('set', 'save');
 
     const API_GLOBAL = 'dataGlobal';
     const API_REGIONAL = 'regional';
@@ -112,8 +107,8 @@ class RiotApi
     {
         $this->messageManager = new MessageManager();
         $this->baseUrl = static::$baseUrlPattern;
-        $this->defaultCacheLifetime = $defaultCacheLifetime;
         $this->cache = $cache;
+        $this->defaultCacheLifetime = $defaultCacheLifetime;
         $this->cacheKeyPrefix = $cacheKeyPrefix;
         $this->setApiKey($apiKey);
         $this->setServer($server);
@@ -201,7 +196,7 @@ class RiotApi
 
         static::$lastCurlError = '';
         //check in cache
-        $json = $this->readUrlInCache($url);
+        $json = $this->readInCache($url);
         if($json !== null) {
             $this->messageManager->addMessage(MessageManager::TYPE_MEMORY, $url);
             return $this->formatOutput($json, $format, $dtoClass);
@@ -249,8 +244,13 @@ class RiotApi
 
         if(!in_array($httpCode, array(429))) {
             //dont store in cache in error among: 429-ratelimit
-            $this->storeUrlInCache($url, $json, $cacheLifetime);
-            $this->messageManager->addMessage(MessageManager::TYPE_CACHE, 'Result stored in cache with lifetime ' . $cacheLifetime);
+            $stored = $this->storeInCache($url, $json, $cacheLifetime);
+            if($stored) {
+                $this->messageManager->addMessage(MessageManager::TYPE_CACHE, 'Result stored in cache with lifetime ' . $cacheLifetime);
+            } else {
+                $this->messageManager->addMessage(MessageManager::TYPE_ERROR,
+                    'Cannot store in cache class "' . get_class($this->cache) . '". Check setter methods.');
+            }
         }
 
         return $this->formatOutput($json, $format, $dtoClass);
@@ -297,92 +297,12 @@ class RiotApi
 
 
 
-
     /**
      * @return MessageManager
      */
     public function getMessageManager()
     {
         return $this->messageManager;
-    }
-
-
-    /**
-     * @return bool
-     */
-    public function hasCacheEnabled()
-    {
-        return !empty($this->cache);
-    }
-
-
-    /**
-     */
-    public function disableCache()
-    {
-        $this->cache = null;
-    }
-
-    /**
-     * @param string $partKey
-     * @return string
-     */
-    public function getCacheFullKey(string $partKey)
-    {
-        return $this->cacheKeyPrefix . $partKey;
-    }
-
-
-    /**
-     * Only static cache used by default, you should extends parent class to implement a cache system
-     * @param string $url
-     * @param string $data
-     * @param int $cacheLifetime (in seconds) not used by default
-     * @throws UnhandledCacheException
-     */
-    protected function storeUrlInCache(string $url, string $data, int $cacheLifetime = 0)
-    {
-        if(empty($cacheLifetime)) $cacheLifetime = $this->defaultCacheLifetime;
-        static::$staticCache[$url] = $data;
-        if(!$this->hasCacheEnabled()) return;
-        $cacheKey = $this->getCacheFullKey($url);
-        $setterFound = false;
-        foreach(static::$cacheSetters as $setter) {
-            if(method_exists($this->cache, $setter)) {
-                try {
-                    $this->cache->$setter($cacheKey, $data, $cacheLifetime);
-                    $setterFound = true;
-                    break;
-                } catch (\Exception $e) {
-
-                }
-            }
-        }
-        if(!$setterFound) throw new UnhandledCacheException(get_class($this->cache), static::$cacheSetters);
-    }
-
-    /**
-     * @param string $url
-     * @return string|null null means not found in cache
-     * @throws UnhandledCacheException
-     */
-    protected function readUrlInCache(string $url)
-    {
-        $static = isset(static::$staticCache[$url]) ? static::$staticCache[$url] : null;
-        if($static !== null) return $static;
-        if(!$this->hasCacheEnabled()) return null;
-        $cacheKey = $this->getCacheFullKey($url);
-        foreach(static::$cacheGetters as $getter) {
-            if(method_exists($this->cache, $getter)) {
-                try {
-                    $data = $this->cache->$getter($cacheKey);
-                    return $data;
-                } catch (\Exception $e) {
-
-                }
-            }
-        }
-        throw new UnhandledCacheException(get_class($this->cache), static::$cacheGetters);
     }
 
 
