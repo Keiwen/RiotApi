@@ -10,6 +10,7 @@ use Keiwen\RiotApi\Exceptions\ApiNotFoundException;
 use Keiwen\RiotApi\Exceptions\UnhandledCacheException;
 use Keiwen\RiotApi\Services\ServiceRegistry;
 use Keiwen\Utils\Analyse\ArrayAnalyser;
+use Keiwen\Utils\Curl\SimpleCurl;
 
 class RiotApi
 {
@@ -276,32 +277,24 @@ class RiotApi
 
     /**
      * @param string $url
-     * @param int    $http_code
+     * @param int    $httpCode
      * @return mixed
      */
-    protected function queryCurl(string $url, &$http_code = 0)
+    protected function queryCurl(string $url, &$httpCode = 0)
     {
-        $ch = curl_init($url);
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_HEADER, false);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-        //dont check SSL certificate
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-        $headers = array('Content-Type: application/json');
-        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 
-        $data = curl_exec($ch);
-        $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        $errno = curl_errno($ch);
-        $error = curl_error($ch);
-        if($errno) {
-            static::$lastCurlError = "Curl error $errno: $error";
+        $curl = new SimpleCurl($url);
+        $curl->addHeader('Content-Type', 'application/json');
+        $curl->addOption(CURLOPT_SSL_VERIFYPEER, false);
+        $data = $curl->query();
+        if($curl->hasCurlError()) {
+            static::$lastCurlError = "Curl error " . $curl->getCurlError();
         }
-        curl_close($ch);
+        $httpCode = $curl->getHttpCode();
 
         return $data;
     }
+
 
 
 
