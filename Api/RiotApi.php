@@ -353,9 +353,42 @@ class RiotApi
     }
 
 
+    /**
+     * @param string $service
+     * @return \Keiwen\RiotApi\Services\AbstractService
+     */
     public function loadService(string $service)
     {
         return ServiceRegistry::loadService($service, $this);
     }
+    
+    /**
+     * @param $output
+     * @return string
+     */
+    public static function detectOutputFormat($output) {
+        switch(true) {
+            case empty($output):
+                //cannot detect, return default
+                return self::FORMAT_JSON;
+            case $output instanceof DtoParent:
+                //clear DTOParent
+                return self::FORMAT_DTO;
+            case is_array($output):
+                //check if array of dto
+                $first = reset($output);
+                if($first instanceof DtoParent) {
+                    return self::FORMAT_DTO;
+                } else {
+                    return self::FORMAT_ARRAY;
+                }
+                break;
+            case is_object($output):
+                //stdClass
+                return self::FORMAT_STDCLASS;
+        }
+        return self::FORMAT_JSON;
+    }
+
 
 }
