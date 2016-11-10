@@ -8,7 +8,7 @@ use Keiwen\RiotApi\Constants\Region;
 use Keiwen\RiotApi\Dto\DtoParent;
 use Keiwen\RiotApi\Exceptions\ApiNotFoundException;
 use Keiwen\RiotApi\Services\ServiceRegistry;
-use Keiwen\Utils\Analyse\ArrayAnalyser;
+use Keiwen\Utils\Analyser\ArrayAnalyser;
 use Keiwen\Utils\Curl\SimpleCurl;
 use Keiwen\Utils\Object\CacheHandlerTrait;
 
