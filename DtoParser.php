@@ -75,7 +75,7 @@ class DtoAttribute
     public $name;
     public $type;
     public $desc;
-    public $default;
+    public $defaultAttr;
     public $alert = array();
     public $nest = false;
 
@@ -88,26 +88,26 @@ class DtoAttribute
             case 'int':
             case 'long':
                 $type = 'int';
-                $default = 0;
+                $defaultAttr = 0;
                 break;
             case 'double':
             case 'float':
                 $type = 'float';
-                $default = 0;
+                $defaultAttr = 0;
                 break;
             case 'string':
-                $default = '\'\'';
+                $defaultAttr = '\'\'';
                 break;
             case 'boolean':
             case 'bool':
                 $type = 'bool';
-                $default = 'false';
+                $defaultAttr = 'false';
                 break;
             default:
                 //type not recognized, alert (should be array or nested object)
                 $alert[] = '//TODO type ' . $type;
                 $type = 'array';
-                $default = 'array()';
+                $defaultAttr = 'array()';
                 $this->nest = true;
                 break;
         }
@@ -116,7 +116,7 @@ class DtoAttribute
             $alert[] = '//TODO use constants';
         }
         $this->type = $type;
-        $this->default = $default;
+        $this->defaultAttr = $defaultAttr;
         $this->alert = $alert;
     }
 
@@ -129,7 +129,7 @@ class DtoAttribute
              */
             public function get' . ucfirst($this->name) . '()
             {
-                return $this->get(\'' . $this->name . '\', ' . $this->default . ');
+                return $this->get(\'' . $this->name . '\', ' . $this->defaultAttr . ');
             }
         ';
     }
