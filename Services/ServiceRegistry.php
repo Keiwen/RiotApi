@@ -17,8 +17,8 @@ class ServiceRegistry
     const FEATURED_GAMES = 'featured-games';
     const GAME = 'game';
     const LEAGUE = 'league';
-    const LOL_STATIC_DATA = 'static-data';
-    const LOL_STATUS = 'status';
+    const LOL_STATIC_DATA = 'lol-static-data';
+    const LOL_STATUS = 'lol-status';
     const MATCH = 'match';
     const MATCHLIST = 'matchlist';
     const STATS = 'stats';
