@@ -6,6 +6,7 @@ namespace Keiwen\RiotApi\Services;
 use Keiwen\RiotApi\Api\RiotApi;
 use Keiwen\RiotApi\Exceptions\InvalidServiceException;
 use Keiwen\RiotApi\Exceptions\ServiceNotFoundException;
+use Keiwen\Utils\Format\StringFormat;
 
 class ServiceRegistry
 {
@@ -153,7 +154,7 @@ class ServiceRegistry
         if(empty($api)) {
             throw new InvalidServiceException($service);
         }
-        return __NAMESPACE__ . '\\' . ucfirst($api) . '\\' . ucfirst($service);
+        return __NAMESPACE__ . '\\' . ucfirst($api) . '\\' . StringFormat::formatCamelCase(str_replace('-', '_', $service), false);
     }
 
 
