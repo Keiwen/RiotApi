@@ -3,7 +3,7 @@
 namespace Keiwen\RiotApi\Api;
 
 use Keiwen\RiotApi\Services\ServiceRegistry;
-use Keiwen\RiotApi\Services\Status\Status;
+use Keiwen\RiotApi\Services\Status\LolStatus;
 
 
 class StatusApi extends RiotApi
@@ -14,7 +14,7 @@ class StatusApi extends RiotApi
 
 
     /**
-     * @return Status
+     * @return LolStatus
      */
     public function getServiceStatus()
     {
