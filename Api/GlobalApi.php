@@ -4,7 +4,7 @@ namespace Keiwen\RiotApi\Api;
 
 
 
-use Keiwen\RiotApi\Services\DataGlobal\StaticData;
+use Keiwen\RiotApi\Services\DataGlobal\LolStaticData;
 use Keiwen\RiotApi\Services\ServiceRegistry;
 
 class GlobalApi extends RiotApi
@@ -15,7 +15,7 @@ class GlobalApi extends RiotApi
 
 
     /**
-     * @return StaticData
+     * @return LolStaticData
      */
     public function getServiceStaticData()
     {
