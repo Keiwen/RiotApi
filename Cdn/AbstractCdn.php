@@ -48,6 +48,16 @@ abstract class AbstractCdn
         return static::$cdnVersion;
     }
 
+	
+    /**
+     * @param string $cdnVersion
+     */
+    public static function setCDNVersion(string $cdnVersion)
+    {
+        static::$cdnVersion = $cdnVersion;
+    }
+
+	
     /**
      * @param $iconId
      * @return string
