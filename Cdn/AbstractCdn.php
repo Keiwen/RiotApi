@@ -41,6 +41,15 @@ abstract class AbstractCdn
     }
 
     /**
+     * @param string $url
+     */
+    public function setCDNUrl(string $url)
+    {
+        static::$cdnUrl = $url;
+    }
+
+	
+    /**
      * @return string
      */
     public function getCDNVersion()
