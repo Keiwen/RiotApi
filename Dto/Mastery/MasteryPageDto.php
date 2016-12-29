@@ -74,8 +74,9 @@ class MasteryPageDto extends DtoParent
      * @param PlayerMasteryDto[] $masteries
      * @return static
      */
-    public function setMasteries(array $masteries)
+    public function setMasteries($masteries)
     {
+        if(empty($masteries)) $masteries = array();
         return $this->set('masteries', $masteries);
     }
 

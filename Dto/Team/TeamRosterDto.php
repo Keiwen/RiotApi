@@ -24,7 +24,7 @@ class TeamRosterDto extends DtoParent
 
     /**
      *
-     * @return TeamMemberInfoDto[}
+     * @return TeamMemberInfoDto[]
      */
     public function getMemberList()
     {
@@ -36,8 +36,9 @@ class TeamRosterDto extends DtoParent
      * @param TeamMemberInfoDto[] $memberList
      * @return static
      */
-    public function setMemberList(array $memberList)
+    public function setMemberList($memberList)
     {
+        if(empty($memberList)) $memberList = array();
         return $this->set('memberList', $memberList);
     }
 

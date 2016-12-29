@@ -36,8 +36,9 @@ class RunePageListDto extends DtoParent
      * @param RunePageDto[] $pages
      * @return static
      */
-    public function setPages(array $pages)
+    public function setPages($pages)
     {
+        if(empty($pages)) $pages = array();
         return $this->set('pages', $pages);
     }
 

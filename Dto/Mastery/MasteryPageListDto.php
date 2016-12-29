@@ -36,8 +36,9 @@ class MasteryPageListDto extends DtoParent
      * @param MasteryPageDto[] $pages
      * @return static
      */
-    public function setPages(array $pages)
+    public function setPages($pages)
     {
+        if(empty($pages)) $pages = array();
         return $this->set('pages', $pages);
     }
 

@@ -35,7 +35,9 @@ class PlayerDto extends PlayerReferenceDto
      * @param PlayerMasteryDto[] $masteries
      * @return static
      */
-    public function setMasteries(array $masteries) {
+    public function setMasteries($masteries)
+    {
+        if(empty($masteries)) $masteries = array();
         return $this->set('masteries', $masteries);
     }
 
@@ -52,7 +54,9 @@ class PlayerDto extends PlayerReferenceDto
      * @param PlayerRuneDto[] $runes
      * @return static
      */
-    public function setRunes(array $runes) {
+    public function setRunes($runes)
+    {
+        if(empty($runes)) $runes = array();
         return $this->set('runes', $runes);
     }
 
@@ -69,7 +73,8 @@ class PlayerDto extends PlayerReferenceDto
      * @param int $spell1Id
      * @return static
      */
-    public function setSpell1Id(int $spell1Id) {
+    public function setSpell1Id(int $spell1Id)
+    {
         return $this->set('spell1Id', $spell1Id);
     }
 
@@ -86,7 +91,8 @@ class PlayerDto extends PlayerReferenceDto
      * @param int $spell2Id
      * @return static
      */
-    public function setSpell2Id(int $spell2Id) {
+    public function setSpell2Id(int $spell2Id)
+    {
         return $this->set('spell2Id', $spell2Id);
     }
 

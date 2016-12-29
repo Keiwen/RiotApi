@@ -35,8 +35,9 @@ class SummonerRankedStatsDto extends DtoParent
      * @param SummonerChampionStatsDto[] $champions
      * @return static
      */
-    public function setChampions(array $champions)
+    public function setChampions($champions)
     {
+        if(empty($champions)) $champions = array();
         return $this->set('champions', $champions);
     }
 

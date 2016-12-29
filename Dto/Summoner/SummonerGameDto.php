@@ -80,8 +80,9 @@ class SummonerGameDto extends GameDto
      * @param PlayerFellowDto[] $fellowPlayers
      * @return static
      */
-    public function setFellowPlayers(array $fellowPlayers)
+    public function setFellowPlayers($fellowPlayers)
     {
+        if(empty($fellowPlayers)) $fellowPlayers = array();
         return $this->set('fellowPlayers', $fellowPlayers);
     }
 

@@ -34,8 +34,9 @@ class ServiceDto extends DtoParent
      * @param IncidentDto[] $incidents
      * @return static
      */
-    public function setIncidents(array $incidents)
+    public function setIncidents($incidents)
     {
+        if(empty($incidents)) $incidents = array();
         return $this->set('incidents', $incidents);
     }
 

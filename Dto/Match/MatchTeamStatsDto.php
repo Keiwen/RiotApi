@@ -36,8 +36,9 @@ class MatchTeamStatsDto extends DtoParent
      * @param BannedChampionDto[] $bans
      * @return static
      */
-    public function setBans(array $bans)
+    public function setBans($bans)
     {
+        if(empty($bans)) $bans = array();
         return $this->set('bans', $bans);
     }
 

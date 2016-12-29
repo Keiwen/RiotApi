@@ -34,8 +34,9 @@ class ShardStatusDto extends ShardDto
      * @param ServiceDto[] $services
      * @return static
      */
-    public function setServices(array $services)
+    public function setServices($services)
     {
+        if(empty($services)) $services = array();
         return $this->set('services', $services);
     }
 

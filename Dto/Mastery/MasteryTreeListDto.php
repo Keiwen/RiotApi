@@ -35,8 +35,9 @@ class MasteryTreeListDto extends DtoParent
      * @param MasteryTreeItemDto[] $masteryTreeItems
      * @return static
      */
-    public function setMasteryTreeItems(array $masteryTreeItems)
+    public function setMasteryTreeItems($masteryTreeItems)
     {
+        if(empty($masteryTreeItems)) $masteryTreeItems = array();
         return $this->set('masteryTreeItems', $masteryTreeItems);
     }
 

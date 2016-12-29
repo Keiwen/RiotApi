@@ -37,8 +37,9 @@ class RecommendedDto extends DtoParent
      * @param BlockDto[] $blocks
      * @return static
      */
-    public function setBlocks(array $blocks)
+    public function setBlocks($blocks)
     {
+        if(empty($blocks)) $blocks = array();
         return $this->set('blocks', $blocks);
     }
 

@@ -23,6 +23,17 @@ class ChampionListDto extends DtoParent
     }
 
 
+    /**
+     * @inheritdoc
+     */
+    protected static function includedJsonObjectMapList()
+    {
+        $included = parent::includedJsonObjectMapList();
+        $included[] = 'data';
+        return $included;
+    }
+
+
 
     /**
      * @return ChampionDto[]
@@ -37,8 +48,9 @@ class ChampionListDto extends DtoParent
      * @param ChampionDto[] $data
      * @return static
      */
-    public function setData(array $data)
+    public function setData($data)
     {
+        if(empty($data)) $data = array();
         return $this->set('data', $data);
     }
 

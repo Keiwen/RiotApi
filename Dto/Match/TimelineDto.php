@@ -55,8 +55,9 @@ class TimelineDto extends DtoParent
      * @param MatchFrameDto[] $frames
      * @return static
      */
-    public function setFrames(array $frames)
+    public function setFrames($frames)
     {
+        if(empty($frames)) $frames = array();
         return $this->set('frames', $frames);
     }
 

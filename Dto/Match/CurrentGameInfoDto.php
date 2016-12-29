@@ -37,7 +37,9 @@ class CurrentGameInfoDto extends GameDto
      * @param BannedChampionDto[] $bannedChampions
      * @return static
      */
-    public function setBannedChampions(array $bannedChampions) {
+    public function setBannedChampions($bannedChampions)
+    {
+        if(empty($bannedChampions)) $bannedChampions = array();
         return $this->set('bannedChampions', $bannedChampions);
     }
 
@@ -54,7 +56,8 @@ class CurrentGameInfoDto extends GameDto
      * @param int $gameLength
      * @return static
      */
-    public function setGameLength(int $gameLength) {
+    public function setGameLength(int $gameLength)
+    {
         return $this->set('gameLength', $gameLength);
     }
 
@@ -71,7 +74,8 @@ class CurrentGameInfoDto extends GameDto
      * @param int $gameQueueConfigId
      * @return static
      */
-    public function setGameQueueConfigId(int $gameQueueConfigId) {
+    public function setGameQueueConfigId(int $gameQueueConfigId)
+    {
         return $this->set('gameQueueConfigId', $gameQueueConfigId);
     }
 
@@ -88,7 +92,8 @@ class CurrentGameInfoDto extends GameDto
      * @param int $gameStartTime
      * @return static
      */
-    public function setGameStartTime($gameStartTime) {
+    public function setGameStartTime($gameStartTime)
+    {
         //if int to large, turned to float, so always turned to string
         return $this->set('gameStartTime', ''.$gameStartTime);
     }
@@ -107,7 +112,9 @@ class CurrentGameInfoDto extends GameDto
      * @param ObserverDto[] $observers
      * @return static
      */
-    public function setObservers(array $observers) {
+    public function setObservers($observers)
+    {
+        if(empty($observers)) $observers = array();
         return $this->set('observers', $observers);
     }
 
@@ -125,7 +132,9 @@ class CurrentGameInfoDto extends GameDto
      * @param CurrentParticipantDto[] $participants
      * @return static
      */
-    public function setParticipants(array $participants) {
+    public function setParticipants($participants)
+    {
+        if(empty($participants)) $participants = array();
         return $this->set('participants', $participants);
     }
 
@@ -142,7 +151,8 @@ class CurrentGameInfoDto extends GameDto
      * @param int $platformId
      * @return static
      */
-    public function setPlatformId(int $platformId) {
+    public function setPlatformId(int $platformId)
+    {
         return $this->set('platformId', $platformId);
     }
 

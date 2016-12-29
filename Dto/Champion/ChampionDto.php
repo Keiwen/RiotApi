@@ -254,8 +254,9 @@ class ChampionDto extends DtoParent
      * @param RecommendedDto[] $recommended
      * @return static
      */
-    public function setRecommended(array $recommended)
+    public function setRecommended($recommended)
     {
+        if(empty($recommended)) $recommended = array();
         return $this->set('recommended', $recommended);
     }
 
@@ -273,8 +274,9 @@ class ChampionDto extends DtoParent
      * @param ChampionSkinDto[] $skins
      * @return static
      */
-    public function setSkins(array $skins)
+    public function setSkins($skins)
     {
+        if(empty($skins)) $skins = array();
         return $this->set('skins', $skins);
     }
 
@@ -292,8 +294,9 @@ class ChampionDto extends DtoParent
      * @param ChampionSpellDto[] $spells
      * @return static
      */
-    public function setSpells(array $spells)
+    public function setSpells($spells)
     {
+        if(empty($spells)) $spells = array();
         return $this->set('spells', $spells);
     }
 

@@ -92,8 +92,9 @@ class IncidentDto extends DtoParent
      * @param MessageDto[] $updates
      * @return static
      */
-    public function setUpdates(array $updates)
+    public function setUpdates($updates)
     {
+        if(empty($updates)) $updates = array();
         return $this->set('updates', $updates);
     }
 

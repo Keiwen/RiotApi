@@ -37,8 +37,9 @@ class ChampionSpellDto extends SpellDto
      * @param ImageDto[] $altimages
      * @return static
      */
-    public function setAltimages(array $altimages)
+    public function setAltimages($altimages)
     {
+        if(empty($altimages)) $altimages = array();
         return $this->set('altimages', $altimages);
     }
 

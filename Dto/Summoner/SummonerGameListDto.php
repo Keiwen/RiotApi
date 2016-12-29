@@ -37,8 +37,9 @@ class SummonerGameListDto extends DtoParent
      * @param SummonerGameDto[] $games
      * @return static
      */
-    public function setGames(array $games)
+    public function setGames($games)
     {
+        if(empty($games)) $games = array();
         return $this->set('games', $games);
     }
 
