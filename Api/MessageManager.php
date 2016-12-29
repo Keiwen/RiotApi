@@ -3,10 +3,14 @@
 namespace Keiwen\RiotApi\Api;
 
 
+use Psr\Log\LoggerInterface;
+
 class MessageManager
 {
 
     private $messages = array();
+    /** @var LoggerInterface */
+    protected $logger;
 
     const METHOD_STATIC = 'static';
 
@@ -29,6 +33,11 @@ class MessageManager
     );
 
 
+    public function __construct(LoggerInterface $logger = null)
+    {
+        $this->logger = $logger;
+    }
+
     /**
      * @param string $type internal type
      * @param string $message
@@ -37,6 +46,13 @@ class MessageManager
     {
         if(empty($this->messageTypes[$type])) return;
         $externalType = $this->messageTypes[$type];
+        if(!empty($this->logger)) {
+            if($type == self::TYPE_ERROR) {
+                $this->logger->error($message);
+            } else {
+                $this->logger->debug("$externalType: $message");
+            }
+        }
         $this->messages[] = array(
             'type' => $externalType,
             'msg' => $message,

@@ -11,6 +11,7 @@ use Keiwen\RiotApi\Services\ServiceRegistry;
 use Keiwen\Utils\Analyser\ArrayAnalyser;
 use Keiwen\Utils\Curl\SimpleCurl;
 use Keiwen\Utils\Object\CacheHandlerTrait;
+use Psr\Log\LoggerInterface;
 
 class RiotApi
 {
@@ -103,9 +104,10 @@ class RiotApi
                                 string $outputFormat = self::FORMAT_JSON,
                                 $cache = null,
                                 int $defaultCacheLifetime = 0,
-                                string $cacheKeyPrefix = '')
+                                string $cacheKeyPrefix = '',
+                                LoggerInterface $logger = null)
     {
-        $this->messageManager = new MessageManager();
+        $this->messageManager = new MessageManager($logger);
         $this->baseUrl = static::$baseUrlPattern;
         $this->cache = $cache;
         $this->defaultCacheLifetime = $defaultCacheLifetime;
