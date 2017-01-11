@@ -171,15 +171,16 @@ class RiotApi
      * @param array  $queryParam
      * @param string $format
      * @param int    $cacheLifetime
-     * @param string $dtoClass
+     * @param string $dtoClass DtoParent by default
      * @return array|DtoParent|\stdClass|string
      */
     public function query(string $serviceUrl,
                           array $queryParam = array(),
                           string $format = '',
                           int $cacheLifetime = 0,
-                          string $dtoClass = DtoParent::class)
+                          string $dtoClass = '')
     {
+        if(empty($dtoClass)) $dtoClass = DtoParent::class;
         if(empty($format)) $format = $this->outputFormat;
         $url = $serviceUrl;
         if(!empty($this->baseUrl) && strpos($serviceUrl, $this->baseUrl) === false) {
@@ -311,13 +312,14 @@ class RiotApi
     /**
      * @param string $json
      * @param string $format
-     * @param string $dtoClass
+     * @param string $dtoClass DtoParent by default
      * @return DtoParent|\stdClass|array|string
      */
     protected function formatOutput(string $json,
                                     string $format = self::FORMAT_JSON,
-                                    string $dtoClass = DtoParent::class)
+                                    string $dtoClass = '')
     {
+        if(empty($dtoClass)) $dtoClass = DtoParent::class;
         if(empty($json)) $json = '';
         switch($format) {
             case self::FORMAT_STDCLASS: return json_decode($json); break;
