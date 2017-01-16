@@ -181,6 +181,7 @@ class RiotApi
                           string $dtoClass = DtoParent::class)
     {
         if(empty($format)) $format = $this->outputFormat;
+        if(empty($cacheLifetime)) $cacheLifetime = $this->defaultCacheLifetime;
         $url = $serviceUrl;
         if(!empty($this->baseUrl) && strpos($serviceUrl, $this->baseUrl) === false) {
             //if base url declared and not present in provided url, add it
@@ -371,6 +372,7 @@ class RiotApi
     public static function detectOutputFormat($output) {
         switch(true) {
             case empty($output):
+                if($output === array()) return self::FORMAT_ARRAY;
                 //cannot detect, return default
                 return self::FORMAT_JSON;
             case $output instanceof DtoParent:
