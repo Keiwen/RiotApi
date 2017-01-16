@@ -48,9 +48,8 @@ class RuneListDto extends BasicDataListDto
      * @param RuneDto[] $data
      * @return static
      */
-    public function setData($data)
+    public function setData(array $data)
     {
-        if(empty($data)) $data = array();
         return $this->set('data', $data);
     }
 

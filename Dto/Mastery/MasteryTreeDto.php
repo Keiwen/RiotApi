@@ -36,13 +36,12 @@ class MasteryTreeDto extends DtoParent
 
 
     /**
-     * @param MasteryTreeListDto[] $cunning
+     * @param MasteryTreeListDto[] $Cunning
      * @return static
      */
-    public function setCunning($cunning)
+    public function setCunning(array $Cunning)
     {
-        if(empty($cunning)) $cunning = array();
-        return $this->set('Cunning', $cunning);
+        return $this->set('Cunning', $Cunning);
     }
 
     /**
@@ -56,13 +55,12 @@ class MasteryTreeDto extends DtoParent
 
 
     /**
-     * @param MasteryTreeListDto[] $ferocity
+     * @param MasteryTreeListDto[] $Ferocity
      * @return static
      */
-    public function setFerocity($ferocity)
+    public function setFerocity(array $Ferocity)
     {
-        if(empty($ferocity)) $ferocity = array();
-        return $this->set('Ferocity', $ferocity);
+        return $this->set('Ferocity', $Ferocity);
     }
 
     /**
@@ -76,13 +74,12 @@ class MasteryTreeDto extends DtoParent
 
 
     /**
-     * @param MasteryTreeListDto[] $resolve
+     * @param MasteryTreeListDto[] $Resolve
      * @return static
      */
-    public function setResolve($resolve)
+    public function setResolve(array $Resolve)
     {
-        if(empty($resolve)) $resolve = array();
-        return $this->set('Resolve', $resolve);
+        return $this->set('Resolve', $Resolve);
     }
 
 

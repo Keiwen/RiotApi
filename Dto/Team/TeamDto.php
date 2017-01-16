@@ -137,9 +137,8 @@ class TeamDto extends DtoParent
      * @param TeamMatchHistorySummaryDto[] $matchHistory
      * @return static
      */
-    public function setMatchHistory($matchHistory)
+    public function setMatchHistory(array $matchHistory)
     {
-        if(empty($matchHistory)) $matchHistory = array();
         return $this->set('matchHistory', $matchHistory);
     }
 
@@ -273,9 +272,8 @@ class TeamDto extends DtoParent
      * @param TeamSummaryStatsDto[] $teamStatDetails
      * @return static
      */
-    public function setTeamStatDetails($teamStatDetails)
+    public function setTeamStatDetails(array $teamStatDetails)
     {
-        if(empty($teamStatDetails)) $teamStatDetails = array();
         return $this->set('teamStatDetails', $teamStatDetails);
     }
 

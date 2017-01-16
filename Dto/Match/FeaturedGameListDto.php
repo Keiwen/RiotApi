@@ -35,8 +35,7 @@ class FeaturedGameListDto extends DtoParent
      * @param int $clientRefreshInterval
      * @return static
      */
-    public function setClientRefreshInterval(int $clientRefreshInterval)
-    {
+    public function setClientRefreshInterval(int $clientRefreshInterval) {
         return $this->set('clientRefreshInterval', $clientRefreshInterval);
     }
 
@@ -54,9 +53,7 @@ class FeaturedGameListDto extends DtoParent
      * @param CurrentGameInfoDto[] $gameList
      * @return static
      */
-    public function setGameList($gameList)
-    {
-        if(empty($gameList)) $gameList = array();
+    public function setGameList(array $gameList) {
         return $this->set('gameList', $gameList);
     }
 

@@ -100,9 +100,8 @@ class MatchDetailDto extends GameDto
      * @param ParticipantIdentityDto[] $participantIdentities
      * @return static
      */
-    public function setParticipantIdentities($participantIdentities)
+    public function setParticipantIdentities(array $participantIdentities)
     {
-        if(empty($participantIdentities)) $participantIdentities = array();
         return $this->set('participantIdentities', $participantIdentities);
     }
 
@@ -120,9 +119,8 @@ class MatchDetailDto extends GameDto
      * @param ParticipantDto[] $participants
      * @return static
      */
-    public function setParticipants($participants)
+    public function setParticipants(array $participants)
     {
-        if(empty($participants)) $participants = array();
         return $this->set('participants', $participants);
     }
 
@@ -213,8 +211,8 @@ class MatchDetailDto extends GameDto
     }
 
     /**
-     * Match Team information
-     * @return MatchTeamStatsDto[]
+     * MatchTeamStatsDto[] information
+     * @return array
      */
     public function getTeams()
     {
@@ -226,9 +224,8 @@ class MatchDetailDto extends GameDto
      * @param MatchTeamStatsDto[] $teams
      * @return static
      */
-    public function setTeams($teams)
+    public function setTeams(array $teams)
     {
-        if(empty($teams)) $teams = array();
         return $this->set('teams', $teams);
     }
 

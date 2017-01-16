@@ -37,9 +37,8 @@ class ChampionInfoListDto extends DtoParent
      * @param ChampionInfoDto[] $champions
      * @return static
      */
-    public function setChampions($champions)
+    public function setChampions(array $champions)
     {
-        if(empty($champions)) $champions = array();
         return $this->set('champions', $champions);
     }
 

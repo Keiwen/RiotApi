@@ -400,9 +400,8 @@ class SpellDto extends DtoParent
      * @param SpellVarsDto[] $vars
      * @return static
      */
-    public function setVars($vars)
+    public function setVars(array $vars)
     {
-        if(empty($vars)) $vars = array();
         return $this->set('vars', $vars);
     }
 
