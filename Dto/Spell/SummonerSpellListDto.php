@@ -46,9 +46,8 @@ class SummonerSpellListDto extends DtoParent
      * @param SummonerSpellDto[] $data
      * @return static
      */
-    public function setData($data)
+    public function setData(array $data)
     {
-        if(empty($data)) $data = array();
         return $this->set('data', $data);
     }
 

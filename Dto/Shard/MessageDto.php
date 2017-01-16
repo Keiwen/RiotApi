@@ -130,9 +130,8 @@ class MessageDto extends DtoParent
      * @param TranslationDto[] $translations
      * @return static
      */
-    public function setTranslations($translations)
+    public function setTranslations(array $translations)
     {
-        if(empty($translations)) $translations = array();
         return $this->set('translations', $translations);
     }
 

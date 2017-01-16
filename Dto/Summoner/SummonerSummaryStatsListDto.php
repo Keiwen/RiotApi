@@ -34,9 +34,8 @@ class SummonerSummaryStatsListDto extends DtoParent
      * @param SummonerSummaryStatsListDto[] $playerStatSummaries
      * @return static
      */
-    public function setPlayerStatSummaries($playerStatSummaries)
+    public function setPlayerStatSummaries(array $playerStatSummaries)
     {
-        if(empty($playerStatSummaries)) $playerStatSummaries = array();
         return $this->set('playerStatSummaries', $playerStatSummaries);
     }
 

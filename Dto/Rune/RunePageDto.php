@@ -93,9 +93,8 @@ class RunePageDto extends DtoParent
      * @param RuneSlotDto[] $slots
      * @return static
      */
-    public function setSlots($slots)
+    public function setSlots(array $slots)
     {
-        if(empty($slots)) $slots = array();
         return $this->set('slots', $slots);
     }
 

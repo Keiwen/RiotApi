@@ -56,9 +56,8 @@ class SummonerMatchReferenceListDto extends DtoParent
      * @param SummonerMatchReferenceDto[] $matches
      * @return static
      */
-    public function setMatches($matches)
+    public function setMatches(array $matches)
     {
-        if(empty($matches)) $matches = array();
         return $this->set('matches', $matches);
     }
 

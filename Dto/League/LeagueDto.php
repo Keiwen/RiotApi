@@ -39,9 +39,8 @@ class LeagueDto extends DtoParent
      * @param LeagueEntryDto[] $entries
      * @return static
      */
-    public function setEntries($entries)
+    public function setEntries(array $entries)
     {
-        if(empty($entries)) $entries= array();
         return $this->set('entries', $entries);
     }
 

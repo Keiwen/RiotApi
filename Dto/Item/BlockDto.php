@@ -39,7 +39,6 @@ class BlockDto extends DtoParent
      */
     public function setItems(array $items)
     {
-        if(empty($items)) $items = array();
         return $this->set('items', $items);
     }
 

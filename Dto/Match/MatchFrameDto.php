@@ -50,9 +50,8 @@ class MatchFrameDto extends DtoParent
      * @param MatchEventDto[] $events
      * @return static
      */
-    public function setEvents($events)
+    public function setEvents(array $events)
     {
-        if(empty($events)) $events = array();
         return $this->set('events', $events);
     }
 
@@ -72,9 +71,8 @@ class MatchFrameDto extends DtoParent
      * @param ParticipantFrameDto[] $participantFrames
      * @return static
      */
-    public function setParticipantFrames($participantFrames)
+    public function setParticipantFrames(array $participantFrames)
     {
-        if(empty($participantFrames)) $participantFrames = array();
         return $this->set('participantFrames', $participantFrames);
     }
 

@@ -52,7 +52,6 @@ class ItemListDto extends BasicDataListDto
      */
     public function setData(array $data)
     {
-        if(empty($data)) $data = array();
         return $this->set('data', $data);
     }
 
@@ -70,9 +69,8 @@ class ItemListDto extends BasicDataListDto
      * @param ItemGroupDto[] $groups
      * @return static
      */
-    public function setGroups($groups)
+    public function setGroups(array $groups)
     {
-        if(empty($groups)) $groups = array();
         return $this->set('groups', $groups);
     }
 
@@ -90,9 +88,8 @@ class ItemListDto extends BasicDataListDto
      * @param ItemTreeDto[] $tree
      * @return static
      */
-    public function setTree($tree)
+    public function setTree(array $tree)
     {
-        if(empty($tree)) $tree = array();
         return $this->set('tree', $tree);
     }
 
