@@ -23,7 +23,15 @@ class LeagueDto extends DtoParent
         $included['entries'] = LeagueEntryDto::class;
         return $included;
     }
-
+    /**
+     * @inheritdoc
+     */
+    protected static function includedJsonObjectMapList()
+    {
+        $included = parent::includedJsonObjectMapList();
+        $included[] = 'entries';
+        return $included;
+    }
 
     /**
      * The requested league entries.

@@ -24,6 +24,15 @@ class SpellDto extends DtoParent
         return $included;
     }
 
+    /**
+     * @inheritdoc
+     */
+    protected static function includedJsonObjectMapList()
+    {
+        $included = parent::includedJsonObjectMapList();
+        $included[] = 'vars';
+        return $included;
+    }
 
     /**
      *

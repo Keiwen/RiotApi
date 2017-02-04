@@ -19,6 +19,16 @@ class ShardStatusDto extends ShardDto
         return $included;
     }
 
+    /**
+     * @inheritdoc
+     */
+    protected static function includedJsonObjectMapList()
+    {
+        $included = parent::includedJsonObjectMapList();
+        $included[] = 'services';
+        return $included;
+    }
+
 
     /**
      *

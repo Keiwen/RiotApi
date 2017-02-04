@@ -25,6 +25,17 @@ class MatchDetailDto extends GameDto
         return $included;
     }
 
+    /**
+     * @inheritdoc
+     */
+    protected static function includedJsonObjectMapList()
+    {
+        $included = parent::includedJsonObjectMapList();
+        $included[] = 'participantIdentities';
+        $included[] = 'participants';
+        $included[] = 'teams';
+        return $included;
+    }
 
     /**
      * Match creation time.

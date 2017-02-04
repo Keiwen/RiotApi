@@ -21,6 +21,16 @@ class ServiceDto extends DtoParent
     }
 
     /**
+     * @inheritdoc
+     */
+    protected static function includedJsonObjectMapList()
+    {
+        $included = parent::includedJsonObjectMapList();
+        $included[] = 'incidents';
+        return $included;
+    }
+
+    /**
      *
      * @return IncidentDto[]
      */

@@ -29,6 +29,17 @@ class ChampionDto extends DtoParent
         return $included;
     }
 
+    /**
+     * @inheritdoc
+     */
+    protected static function includedJsonObjectMapList()
+    {
+        $included = parent::includedJsonObjectMapList();
+        $included[] = 'recommended';
+        $included[] = 'skins';
+        $included[] = 'spells';
+        return $included;
+    }
 
 
     /**

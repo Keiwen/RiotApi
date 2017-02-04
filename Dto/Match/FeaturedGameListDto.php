@@ -21,6 +21,16 @@ class FeaturedGameListDto extends DtoParent
         return $included;
     }
 
+    /**
+     * @inheritdoc
+     */
+    protected static function includedJsonObjectMapList()
+    {
+        $included = parent::includedJsonObjectMapList();
+        $included[] = 'gameList';
+        return $included;
+    }
+
 
     /**
      * The suggested interval to wait before requesting FeaturedGames again

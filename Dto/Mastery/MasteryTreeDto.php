@@ -24,6 +24,17 @@ class MasteryTreeDto extends DtoParent
         return $included;
     }
 
+    /**
+     * @inheritdoc
+     */
+    protected static function includedJsonObjectMapList()
+    {
+        $included = parent::includedJsonObjectMapList();
+        $included[] = 'Cunning';
+        $included[] = 'Ferocity';
+        $included[] = 'Resolve';
+        return $included;
+    }
 
     /**
      *

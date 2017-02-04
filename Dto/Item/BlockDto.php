@@ -21,6 +21,15 @@ class BlockDto extends DtoParent
         return $included;
     }
 
+    /**
+     * @inheritdoc
+     */
+    protected static function includedJsonObjectMapList()
+    {
+        $included = parent::includedJsonObjectMapList();
+        $included[] = 'items';
+        return $included;
+    }
 
 
     /**

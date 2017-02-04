@@ -20,6 +20,15 @@ class MessageDto extends DtoParent
         return $included;
     }
 
+    /**
+     * @inheritdoc
+     */
+    protected static function includedJsonObjectMapList()
+    {
+        $included = parent::includedJsonObjectMapList();
+        $included[] = 'translations';
+        return $included;
+    }
 
     /**
      *

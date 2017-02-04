@@ -30,6 +30,7 @@ class MatchFrameDto extends DtoParent
     protected static function includedJsonObjectMapList()
     {
         $included = parent::includedJsonObjectMapList();
+        $included[] = 'events';
         $included[] = 'participantFrames';
         return $included;
     }

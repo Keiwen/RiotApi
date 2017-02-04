@@ -23,6 +23,17 @@ class TeamDto extends DtoParent
         return $included;
     }
 
+    /**
+     * @inheritdoc
+     */
+    protected static function includedJsonObjectMapList()
+    {
+        $included = parent::includedJsonObjectMapList();
+        $included[] = 'matchHistory';
+        $included[] = 'teamStatDetails';
+        return $included;
+    }
+
 
     /**
      * Date that team was created specified as epoch milliseconds.
