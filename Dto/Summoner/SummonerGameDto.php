@@ -24,6 +24,16 @@ class SummonerGameDto extends GameDto
         return $included;
     }
 
+    /**
+     * @inheritdoc
+     */
+    protected static function includedJsonObjectMapList()
+    {
+        $included = parent::includedJsonObjectMapList();
+        $included[] = 'fellowPlayers';
+        return $included;
+    }
+
 
     /**
      * Champion ID associated with game.

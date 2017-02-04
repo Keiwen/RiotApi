@@ -21,6 +21,17 @@ class SummonerSummaryStatsListDto extends DtoParent
     }
 
     /**
+     * @inheritdoc
+     */
+    protected static function includedJsonObjectMapList()
+    {
+        $included = parent::includedJsonObjectMapList();
+        $included[] = 'playerStatSummaries';
+        return $included;
+    }
+
+
+    /**
      * Collection of player stats summaries associated with the summoner.
      * @return SummonerSummaryStatsListDto[]
      */

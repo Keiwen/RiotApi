@@ -21,6 +21,16 @@ class MatchTeamStatsDto extends DtoParent
         return $included;
     }
 
+    /**
+     * @inheritdoc
+     */
+    protected static function includedJsonObjectMapList()
+    {
+        $included = parent::includedJsonObjectMapList();
+        $included[] = 'bans';
+        return $included;
+    }
+
 
     /**
      * If game was draft mode, contains banned champion data, otherwise null

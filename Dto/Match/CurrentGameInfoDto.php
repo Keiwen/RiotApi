@@ -23,6 +23,18 @@ class CurrentGameInfoDto extends GameDto
         return $included;
     }
 
+    /**
+     * @inheritdoc
+     */
+    protected static function includedJsonObjectMapList()
+    {
+        $included = parent::includedJsonObjectMapList();
+        $included[] = 'bannedChampions';
+        $included[] = 'observers';
+        $included[] = 'participants';
+        return $included;
+    }
+
 
     /**
      * Banned champion information

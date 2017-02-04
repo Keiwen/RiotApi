@@ -21,6 +21,16 @@ class SummonerMatchReferenceListDto extends DtoParent
         return $included;
     }
 
+    /**
+     * @inheritdoc
+     */
+    protected static function includedJsonObjectMapList()
+    {
+        $included = parent::includedJsonObjectMapList();
+        $included[] = 'matches';
+        return $included;
+    }
+
 
     /**
      *

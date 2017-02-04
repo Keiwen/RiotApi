@@ -22,6 +22,15 @@ class RecommendedDto extends DtoParent
         return $included;
     }
 
+    /**
+     * @inheritdoc
+     */
+    protected static function includedJsonObjectMapList()
+    {
+        $included = parent::includedJsonObjectMapList();
+        $included[] = 'blocks';
+        return $included;
+    }
 
     /**
      *

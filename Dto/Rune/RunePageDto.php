@@ -20,6 +20,15 @@ class RunePageDto extends DtoParent
         return $included;
     }
 
+    /**
+     * @inheritdoc
+     */
+    protected static function includedJsonObjectMapList()
+    {
+        $included = parent::includedJsonObjectMapList();
+        $included[] = 'slots';
+        return $included;
+    }
 
     /**
      * Indicates if the mastery page is the current mastery page.

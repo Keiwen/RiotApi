@@ -22,6 +22,15 @@ class ChampionSpellDto extends SpellDto
         return $included;
     }
 
+    /**
+     * @inheritdoc
+     */
+    protected static function includedJsonObjectMapList()
+    {
+        $included = parent::includedJsonObjectMapList();
+        $included[] = 'altimages';
+        return $included;
+    }
 
     /**
      *

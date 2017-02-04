@@ -21,6 +21,15 @@ class SummonerGameListDto extends DtoParent
         return $included;
     }
 
+    /**
+     * @inheritdoc
+     */
+    protected static function includedJsonObjectMapList()
+    {
+        $included = parent::includedJsonObjectMapList();
+        $included[] = 'games';
+        return $included;
+    }
 
 
     /**

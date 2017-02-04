@@ -21,6 +21,16 @@ class PlayerDto extends PlayerReferenceDto
         return $included;
     }
 
+    /**
+     * @inheritdoc
+     */
+    protected static function includedJsonObjectMapList()
+    {
+        $included = parent::includedJsonObjectMapList();
+        $included[] = 'runes';
+        $included[] = 'masteries';
+        return $included;
+    }
 
     /**
      * The masteries used by this participant

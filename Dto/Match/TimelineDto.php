@@ -21,6 +21,15 @@ class TimelineDto extends DtoParent
         return $included;
     }
 
+    /**
+     * @inheritdoc
+     */
+    protected static function includedJsonObjectMapList()
+    {
+        $included = parent::includedJsonObjectMapList();
+        $included[] = 'frames';
+        return $included;
+    }
 
     /**
      * Time between each returned frame in milliseconds.

@@ -20,6 +20,16 @@ class SummonerRankedStatsDto extends DtoParent
         return $included;
     }
 
+    /**
+     * @inheritdoc
+     */
+    protected static function includedJsonObjectMapList()
+    {
+        $included = parent::includedJsonObjectMapList();
+        $included[] = 'champions';
+        return $included;
+    }
+
 
     /**
      * Collection of aggregated stats summarized by champion.

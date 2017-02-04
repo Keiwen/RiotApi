@@ -30,6 +30,8 @@ class ItemListDto extends BasicDataListDto
     {
         $included = parent::includedJsonObjectMapList();
         $included[] = 'data';
+        $included[] = 'groups';
+        $included[] = 'tree';
         return $included;
     }
 

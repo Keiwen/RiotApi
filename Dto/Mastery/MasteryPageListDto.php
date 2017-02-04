@@ -21,6 +21,15 @@ class MasteryPageListDto extends DtoParent
         return $included;
     }
 
+    /**
+     * @inheritdoc
+     */
+    protected static function includedJsonObjectMapList()
+    {
+        $included = parent::includedJsonObjectMapList();
+        $included[] = 'pages';
+        return $included;
+    }
 
     /**
      * Collection of mastery pages associated with the summoner.

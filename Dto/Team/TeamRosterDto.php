@@ -21,6 +21,15 @@ class TeamRosterDto extends DtoParent
         return $included;
     }
 
+    /**
+     * @inheritdoc
+     */
+    protected static function includedJsonObjectMapList()
+    {
+        $included = parent::includedJsonObjectMapList();
+        $included[] = 'memberList';
+        return $included;
+    }
 
     /**
      *
