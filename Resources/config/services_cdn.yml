@@ -3,7 +3,7 @@ parameters:
     keiwen_riot_api.cdn.ddragon.class: Keiwen\RiotApi\Cdn\DdragonCdn
     keiwen_riot_api.cdn.autoddragon.class: Keiwen\RiotApi\Cdn\AutoDdragonCdn
     keiwen_riot_api.cdn.ddragon.version: 6.21.1
-    keiwen_riot_api.cdn.twig.class: Keiwen\RiotApiBundle\Twig\RiotCdnTwig
+    keiwen_riot_api.cdn.twig.class: Keiwen\RiotApi\Twig\RiotCdnTwig
 
 services:
 
