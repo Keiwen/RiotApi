@@ -200,7 +200,7 @@ class RiotApi
 
         static::$lastCurlError = '';
         //check in cache
-        $json = $this->readInCache($url);
+        $json = $this->readInCache(rawurlencode($url));
         if($json !== null) {
             $this->messageManager->addMessage(MessageManager::TYPE_MEMORY, $url);
             return $this->formatOutput($json, $format, $dtoClass);
@@ -248,7 +248,7 @@ class RiotApi
 
         if(!in_array($httpCode, array(429))) {
             //dont store in cache in error among: 429-ratelimit
-            $stored = $this->storeInCache($url, $json, $cacheLifetime);
+            $stored = $this->storeInCache(rawurlencode($url), $json, $cacheLifetime);
             if($stored) {
                 $this->messageManager->addMessage(MessageManager::TYPE_CACHE, 'Result stored in cache with lifetime ' . $cacheLifetime);
             } else {
