@@ -144,7 +144,7 @@ abstract class AbstractService
             $dtoClass = DtoParent::class;
         }
         //response is a map of wanted object, but was processed in a single object, re-create it
-        $raw = $result->exportRawData();
+        $raw = $result->exportData();
         $result = array();
         foreach($raw as $key => $objectData) {
             $result[$key] = new $dtoClass($objectData);
